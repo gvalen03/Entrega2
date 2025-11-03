@@ -74,6 +74,7 @@ public class ProjectServiceFacade implements IProjectServiceFacade {
     @Override
     public void reintentarProyecto(Long id) {
         ProyectoGrado p = proyectoService.obtenerPorId(id);
+
         p.reintentar();
         proyectoService.guardar(p);
     }

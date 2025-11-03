@@ -5,5 +5,5 @@ import lombok.EqualsAndHashCode;
 
 @Entity
 @EqualsAndHashCode(callSuper = true)
-public class JefeDepartamento extends Usuario {
+public class DepartmentHead extends User {
 }

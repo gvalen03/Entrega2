@@ -1,6 +1,6 @@
 package co.edu.unicauca.user_microservice.entity;
 
-import co.edu.unicauca.user_microservice.entity.enums.TipoDocente;
+import co.edu.unicauca.user_microservice.entity.enums.TypeTeacher;
 import jakarta.persistence.Entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,6 +8,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @Entity
 @EqualsAndHashCode(callSuper = true)
-public class Docente extends Usuario {
-    private TipoDocente tipoDocente;
+public class Teacher extends User {
+    private TypeTeacher typeTeacher;
 }

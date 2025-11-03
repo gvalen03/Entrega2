@@ -1,11 +1,10 @@
 package co.edu.unicauca.user_microservice.infra.dto;
-
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@Schema(description = "Datos necesarios para registrar un Estudiante")
-public class JefeDepartamentoRequest {
+@Schema(description = "Datos necesarios para registrar un Coordinador")
+public class CoordinatorRequest {
 
     @Schema(example = "juan.perez@unicauca.edu.co", description = "Email institucional", requiredMode = Schema.RequiredMode.REQUIRED)
     private String email;

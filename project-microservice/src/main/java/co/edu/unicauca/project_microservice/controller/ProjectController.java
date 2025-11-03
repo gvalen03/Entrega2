@@ -19,7 +19,7 @@ import java.util.List;
 
 /**
  * Controlador REST para gestionar proyectos de grado.
- * Permite crear nuevos proyectos, evaluarlos y consultar el estado de los proyectos de un estudiante.
+ * Permite crear nuevos proyectos, evaluarlos y consultar el estado de los proyectos de un student.
  */
 @RestController
 @RequestMapping("/api/proyectos")
@@ -32,7 +32,7 @@ public class ProjectController {
     @Operation(
         summary = "Crear un nuevo proyecto de grado",
         description = "Registra un nuevo proyecto de grado en la base de datos y publica un mensaje en RabbitMQ " +
-                      "para que el microservicio de notificaciones envíe un correo al coordinador.",
+                      "para que el microservicio de notificaciones envíe un correo al coordinator.",
         requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
             description = "Datos del proyecto a registrar",
             required = true,
@@ -46,7 +46,7 @@ public class ProjectController {
                       "titulo": "Sistema de Gestión de Bibliotecas",
                       "modalidad": "INVESTIGACION",
                       "directorEmail": "juan.perez@unicauca.edu.co",
-                      "codirectorEmail": "coordinador.sistemas@unicauca.edu.co",
+                      "codirectorEmail": "coordinator.sistemas@unicauca.edu.co",
                       "estudiante1Email": "ana.gomez@unicauca.edu.co",
                       "estudiante2Email": "carlos.martinez@unicauca.edu.co",
                       "objetivoGeneral": "Desarrollar un sistema...",
@@ -71,7 +71,7 @@ public class ProjectController {
                           "titulo": "Sistema de Gestión de Bibliotecas",
                           "modalidad": "INVESTIGACION",
                           "directorEmail": "juan.perez@unicauca.edu.co",
-                          "codirectorEmail": "coordinador.sistemas@unicauca.edu.co",
+                          "codirectorEmail": "coordinator.sistemas@unicauca.edu.co",
                           "estudiante1Email": "ana.gomez@unicauca.edu.co",
                           "estudiante2Email": "carlos.martinez@unicauca.edu.co",
                           "objetivoGeneral": "Desarrollar un sistema...",
@@ -193,12 +193,12 @@ public class ProjectController {
     }
 
     @Operation(
-        summary = "Obtener proyectos por estudiante",
-        description = "Recupera todos los proyectos asociados a un estudiante específico.",
+        summary = "Obtener proyectos por student",
+        description = "Recupera todos los proyectos asociados a un student específico.",
         parameters = {
             @io.swagger.v3.oas.annotations.Parameter(
                 name = "email",
-                description = "Correo del estudiante",
+                description = "Correo del student",
                 required = true,
                 example = "ana.gomez@unicauca.edu.co"
             )
@@ -242,7 +242,7 @@ public class ProjectController {
             )
         }
     )
-    @GetMapping("/estudiante/{email}")
+    @GetMapping("/student/{email}")
     public ResponseEntity<?> obtenerPorEstudiante(@PathVariable String email) {
         try {
             List<ProyectoGrado> proyectos = facade.obtenerProyectosPorEstudiante(email);

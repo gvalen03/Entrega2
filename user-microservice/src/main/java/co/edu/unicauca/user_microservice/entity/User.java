@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Data
 @NoArgsConstructor
-public abstract class Usuario {
+public abstract class User {
     @Id
     @Column(unique = true, nullable = false)
     private String email; 

@@ -1,12 +1,12 @@
 package co.edu.unicauca.user_microservice.infra.dto;
 
-import co.edu.unicauca.user_microservice.entity.enums.TipoDocente;
+import co.edu.unicauca.user_microservice.entity.enums.TypeTeacher;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
 @Schema(description = "Datos necesarios para registrar un docente")
-public class DocenteRequest {
+public class TeacherRequest {
     @Schema(example = "juan.perez@unicauca.edu.co", requiredMode = Schema.RequiredMode.REQUIRED)
     private String email;
     @Schema(example = "Pass123!", requiredMode = Schema.RequiredMode.REQUIRED)
@@ -20,5 +20,5 @@ public class DocenteRequest {
     @Schema(example = "INGENIERIA_SISTEMAS", requiredMode = Schema.RequiredMode.REQUIRED)
     private String programa;
     @Schema(requiredMode = Schema.RequiredMode.REQUIRED)
-    private TipoDocente tipoDocente;
+    private TypeTeacher typeTeacher;
 }
