@@ -23,7 +23,8 @@ public class DocumentoService implements IDocumentoService {
     @Autowired
     private DocumentoRepository documentoRepository;
 
-    private final DocumentoFactory documentoFactory = DocumentoFactory.getInstance();
+    @Autowired
+    private DocumentoFactory documentoFactory;
 
     @Value("${app.document.storage-dir}")
     private String storageDir;
@@ -38,10 +39,10 @@ public class DocumentoService implements IDocumentoService {
             throw new IllegalArgumentException("El archivo no puede estar vacío.");
         }
 
-        // --- PATRÓN FACTORY METHOD ---
-        DocumentoValidator validator = documentoFactory.crearValidator(tipoDocumento);
-        validator.validar(archivo);
-        // ------------------------------
+        List<DocumentoValidator> validators = documentoFactory.crearValidators(tipoDocumento);
+        for (DocumentoValidator validator : validators) {
+            validator.validar(archivo);
+        }
 
         Path dirPath = Paths.get(storageDir);
         if (!Files.exists(dirPath)) {
