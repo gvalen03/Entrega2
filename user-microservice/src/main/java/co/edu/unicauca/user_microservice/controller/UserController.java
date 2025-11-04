@@ -1,14 +1,14 @@
 package co.edu.unicauca.user_microservice.controller;
 
-import co.edu.unicauca.user_microservice.entity.Coordinador;
-import co.edu.unicauca.user_microservice.entity.Docente;
-import co.edu.unicauca.user_microservice.entity.Estudiante;
-import co.edu.unicauca.user_microservice.entity.JefeDepartamento;
-import co.edu.unicauca.user_microservice.infra.dto.CoordinadorRequest;
-import co.edu.unicauca.user_microservice.infra.dto.DocenteRequest;
-import co.edu.unicauca.user_microservice.infra.dto.EstudianteRequest;
-import co.edu.unicauca.user_microservice.infra.dto.JefeDepartamentoRequest;
-import co.edu.unicauca.user_microservice.service.IUsuarioService;
+import co.edu.unicauca.user_microservice.entity.Coordinator;
+import co.edu.unicauca.user_microservice.entity.Student;
+import co.edu.unicauca.user_microservice.entity.Teacher;
+import co.edu.unicauca.user_microservice.entity.DepartmentHead;
+import co.edu.unicauca.user_microservice.infra.dto.CoordinatorRequest;
+import co.edu.unicauca.user_microservice.infra.dto.TeacherRequest;
+import co.edu.unicauca.user_microservice.infra.dto.StudentRequest;
+import co.edu.unicauca.user_microservice.infra.dto.DepartmentHeadRequest;
+import co.edu.unicauca.user_microservice.service.IUserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -30,10 +30,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/usuarios")
 @Tag(name = "Gestión de Usuarios", description = "API para registrar y consultar usuarios del sistema")
-public class UsuarioController {
+public class UserController {
 
     @Autowired
-    private IUsuarioService usuarioService;
+    private IUserService usuarioService;
 
         @Operation(summary = "Validar existencia y rol de un usuario")
     @GetMapping("/validar")
@@ -56,7 +56,7 @@ public class UsuarioController {
             required = true,
             content = @Content(
                 mediaType = "application/json",
-                schema = @Schema(implementation = DocenteRequest.class),
+                schema = @Schema(implementation = TeacherRequest.class),
                 examples = @ExampleObject(
                     name = "Ejemplo de docente",
                     value = """
@@ -79,18 +79,18 @@ public class UsuarioController {
         }
     )
     @PostMapping("/docentes")
-    public ResponseEntity<?> registrarDocente(@RequestBody DocenteRequest request) {
+    public ResponseEntity<?> registrarDocente(@RequestBody TeacherRequest request) {
         try {
-            Docente docente = new Docente();
-            docente.setEmail(request.getEmail());
-            docente.setPassword(request.getPassword());
-            docente.setNombres(request.getNombres());
-            docente.setApellidos(request.getApellidos());
-            docente.setCelular(request.getCelular());
-            docente.setPrograma(request.getPrograma());
-            docente.setTipoDocente(request.getTipoDocente());
+            Teacher teacher = new Teacher();
+            teacher.setEmail(request.getEmail());
+            teacher.setPassword(request.getPassword());
+            teacher.setNombres(request.getNombres());
+            teacher.setApellidos(request.getApellidos());
+            teacher.setCelular(request.getCelular());
+            teacher.setPrograma(request.getPrograma());
+            teacher.setTypeTeacher(request.getTypeTeacher());
 
-            Docente resultado = (Docente) usuarioService.registrarDocente(docente);
+            Teacher resultado = (Teacher) usuarioService.registrarDocente(teacher);
             return ResponseEntity.ok(resultado);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("{\"error\": \"" + e.getMessage() + "\"}");
@@ -106,7 +106,7 @@ public class UsuarioController {
             required = true,
             content = @Content(
                 mediaType = "application/json",
-                schema = @Schema(implementation = EstudianteRequest.class),
+                schema = @Schema(implementation = StudentRequest.class),
                 examples = @ExampleObject(
                     name = "Ejemplo de estudiante",
                     value = """
@@ -128,17 +128,17 @@ public class UsuarioController {
         }
     )
     @PostMapping("/estudiantes")
-    public ResponseEntity<?> registrarEstudiante(@RequestBody EstudianteRequest request) {
+    public ResponseEntity<?> registrarEstudiante(@RequestBody StudentRequest request) {
         try {
-            Estudiante estudiante = new Estudiante();
-            estudiante.setEmail(request.getEmail());
-            estudiante.setPassword(request.getPassword());
-            estudiante.setNombres(request.getNombres());
-            estudiante.setApellidos(request.getApellidos());
-            estudiante.setCelular(request.getCelular());
-            estudiante.setPrograma(request.getPrograma());
+            Student student = new Student();
+            student.setEmail(request.getEmail());
+            student.setPassword(request.getPassword());
+            student.setNombres(request.getNombres());
+            student.setApellidos(request.getApellidos());
+            student.setCelular(request.getCelular());
+            student.setPrograma(request.getPrograma());
 
-            Estudiante resultado = (Estudiante) usuarioService.registrarEstudiante(estudiante);
+            Student resultado = (Student) usuarioService.registrarEstudiante(student);
             return ResponseEntity.ok(resultado);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("{\"error\": \"" + e.getMessage() + "\"}");
@@ -147,19 +147,19 @@ public class UsuarioController {
 
     // ========== COORDINADORES ==========
     @Operation(
-        summary = "Registrar un nuevo coordinador",
-        description = "Registra un coordinador de programa en el sistema.",
+        summary = "Registrar un nuevo coordinator",
+        description = "Registra un coordinator de programa en el sistema.",
         requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-            description = "Datos del coordinador a registrar",
+            description = "Datos del coordinator a registrar",
             required = true,
             content = @Content(
                 mediaType = "application/json",
-                schema = @Schema(implementation = CoordinadorRequest.class),
+                schema = @Schema(implementation = CoordinatorRequest.class),
                 examples = @ExampleObject(
-                    name = "Ejemplo de coordinador",
+                    name = "Ejemplo de coordinator",
                     value = """
                     {
-                      "email": "coordinador.sistemas@unicauca.edu.co",
+                      "email": "coordinator.sistemas@unicauca.edu.co",
                       "password": "Coord123!",
                       "nombres": "Carlos Alberto",
                       "apellidos": "Ramírez Ruiz",
@@ -176,17 +176,17 @@ public class UsuarioController {
         }
     )
     @PostMapping("/coordinadores")
-    public ResponseEntity<?> registrarCoordinador(@RequestBody CoordinadorRequest request) {
+    public ResponseEntity<?> registrarCoordinador(@RequestBody CoordinatorRequest request) {
         try {
-            Coordinador coordinador = new Coordinador();
-            coordinador.setEmail(request.getEmail());
-            coordinador.setPassword(request.getPassword());
-            coordinador.setNombres(request.getNombres());
-            coordinador.setApellidos(request.getApellidos());
-            coordinador.setCelular(request.getCelular());
-            coordinador.setPrograma(request.getPrograma());
+            Coordinator coordinator = new Coordinator();
+            coordinator.setEmail(request.getEmail());
+            coordinator.setPassword(request.getPassword());
+            coordinator.setNombres(request.getNombres());
+            coordinator.setApellidos(request.getApellidos());
+            coordinator.setCelular(request.getCelular());
+            coordinator.setPrograma(request.getPrograma());
 
-            Coordinador resultado = (Coordinador) usuarioService.registrarCoordinador(coordinador);
+            Coordinator resultado = (Coordinator) usuarioService.registrarCoordinador(coordinator);
             return ResponseEntity.ok(resultado);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("{\"error\": \"" + e.getMessage() + "\"}");
@@ -202,7 +202,7 @@ public class UsuarioController {
             required = true,
             content = @Content(
                 mediaType = "application/json",
-                schema = @Schema(implementation = JefeDepartamentoRequest.class),
+                schema = @Schema(implementation = DepartmentHeadRequest.class),
                 examples = @ExampleObject(
                     name = "Ejemplo de jefe de departamento",
                     value = """
@@ -224,9 +224,9 @@ public class UsuarioController {
         }
     )
     @PostMapping("/jefes-departamento")
-    public ResponseEntity<?> registrarJefeDepartamento(@RequestBody JefeDepartamentoRequest request) {
+    public ResponseEntity<?> registrarJefeDepartamento(@RequestBody DepartmentHeadRequest request) {
         try {
-            JefeDepartamento jefe = new JefeDepartamento();
+            DepartmentHead jefe = new DepartmentHead();
             jefe.setEmail(request.getEmail());
             jefe.setPassword(request.getPassword());
             jefe.setNombres(request.getNombres());
@@ -234,7 +234,7 @@ public class UsuarioController {
             jefe.setCelular(request.getCelular());
             jefe.setPrograma(request.getPrograma());
 
-            JefeDepartamento resultado = (JefeDepartamento) usuarioService.registrarJefeDepartamento(jefe);
+            DepartmentHead resultado = (DepartmentHead) usuarioService.registrarJefeDepartamento(jefe);
             return ResponseEntity.ok(resultado);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("{\"error\": \"" + e.getMessage() + "\"}");

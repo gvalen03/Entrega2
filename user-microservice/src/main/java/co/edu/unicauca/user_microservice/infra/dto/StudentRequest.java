@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Schema(description = "Datos necesarios para registrar un estudiante")
-public class EstudianteRequest {
+public class StudentRequest {
     @Schema(example = "ana.gomez@unicauca.edu.co", requiredMode = Schema.RequiredMode.REQUIRED)
     private String email;
     @Schema(example = "Stud123!", requiredMode = Schema.RequiredMode.REQUIRED)

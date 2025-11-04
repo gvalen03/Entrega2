@@ -7,7 +7,7 @@ Microservicio que gestiona el ciclo de vida de los proyectos de grado, incluyend
 - Evaluación de Formato A (aprobar/rechazar).
 - Reintento de Formato A (hasta 3 intentos).
 - Subida de anteproyecto.
-- Consulta de proyectos por estudiante o jefe de departamento.
+- Consulta de proyectos por student o jefe de departamento.
 - Publicación de eventos asíncronos (RabbitMQ).
 
 ## Patrones de diseño
@@ -27,7 +27,7 @@ Microservicio que gestiona el ciclo de vida de los proyectos de grado, incluyend
 - `POST /api/proyectos/{id}/evaluar`
 - `POST /api/proyectos/{id}/reintentar`
 - `POST /api/proyectos/{id}/anteproyecto`
-- `GET /api/proyectos/estudiante/{email}`
+- `GET /api/proyectos/student/{email}`
 - `GET /api/proyectos/anteproyectos/jefe/{email}`
 
 ## Puerto

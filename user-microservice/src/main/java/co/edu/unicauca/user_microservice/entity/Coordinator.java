@@ -5,5 +5,5 @@ import lombok.EqualsAndHashCode;
 
 @Entity
 @EqualsAndHashCode(callSuper = true)
-public class Coordinador extends Usuario {
+public class Coordinator extends User {
 }
