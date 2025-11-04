@@ -7,52 +7,52 @@
   },
   "item": [
     {
-      "name": "🔷 Paso 1: Registrar Usuarios",
+      "name": "1: Registro de Usuarios",
       "item": [
         {
-          "name": "1.1 Registrar Docente",
+          "name": "1.1 Registro de Docentes",
           "request": {
             "method": "POST",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"docente@unicauca.edu.co\",\n  \"password\": \"Pass123!\",\n  \"nombres\": \"Juan Carlos\",\n  \"apellidos\": \"Pérez Gómez\",\n  \"programa\": \"INGENIERIA_SISTEMAS\",\n  \"tipoDocente\": \"PLANTA\"\n}"
+              "raw": "{\n  \"email\": \"correoDocente@unicauca.edu.co\",\n  \"password\": \"ContraProfe@420\",\n  \"nombres\": \"Jason Estiven\",\n  \"apellidos\": \"Sanchez Romero\",\n  \"programa\": \"INGENIERIA_SISTEMAS\",\n  \"tipoDocente\": \"PLANTA\"\n}"
             },
             "url": "http://localhost:8081/api/usuarios/docentes"
           }
         },
         {
-          "name": "1.2 Registrar Estudiante",
+          "name": "1.2 Registro de Estudiantes",
           "request": {
             "method": "POST",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"estudiante@unicauca.edu.co\",\n  \"password\": \"Stud123!\",\n  \"nombres\": \"Ana María\",\n  \"apellidos\": \"López Ramírez\",\n  \"programa\": \"INGENIERIA_SISTEMAS\"\n}"
+              "raw": "{\n  \"email\": \"CorreoEstudiante@unicauca.edu.co\",\n  \"password\": \"ContraEst@420\",\n  \"nombres\": \"Diana\",\n  \"apellidos\": \"Diaz Ramirez\",\n  \"programa\": \"INGENIERIA_SISTEMAS\"\n}"
             },
             "url": "http://localhost:8081/api/usuarios/estudiantes"
           }
         },
         {
-          "name": "1.3 Registrar Coordinador",
+          "name": "1.3 Registro de Coordinadores",
           "request": {
             "method": "POST",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"coordinador@unicauca.edu.co\",\n  \"password\": \"Coord123!\",\n  \"nombres\": \"Carlos Alberto\",\n  \"apellidos\": \"Ramírez Ruiz\",\n  \"programa\": \"INGENIERIA_SISTEMAS\"\n}"
+              "raw": "{\n  \"email\": \"CorrCord@unicauca.edu.co\",\n  \"password\": \"ContraCoord@420\",\n  \"nombres\": \"Juan Carlos\",\n  \"apellidos\": \"Sebastian Hernandez\",\n  \"programa\": \"INGENIERIA_SISTEMAS\"\n}"
             },
             "url": "http://localhost:8081/api/usuarios/coordinadores"
           }
         },
         {
-          "name": "1.4 Registrar Jefe de Departamento",
+          "name": "1.4 Registro de Jefe de Departamento",
           "request": {
             "method": "POST",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"jefe@unicauca.edu.co\",\n  \"password\": \"Jefe123!\",\n  \"nombres\": \"María Fernanda\",\n  \"apellidos\": \"López Sánchez\",\n  \"programa\": \"INGENIERIA_SISTEMAS\"\n}"
+              "raw": "{\n  \"email\": \"CorreoJefazo@unicauca.edu.co\",\n  \"password\": \"ContraJefazo@420\",\n  \"nombres\": \"Virginia\",\n  \"apellidos\": \"Delia Idrobo\",\n  \"programa\": \"INGENIERIA_SISTEMAS\"\n}"
             },
             "url": "http://localhost:8081/api/usuarios/jefes-departamento"
           }
@@ -60,22 +60,22 @@
       ]
     },
     {
-      "name": "🔷 Paso 2: Crear Proyecto y Subir Formato A",
+      "name": "2: Creacion de Proyecto y subida de Formato A",
       "item": [
         {
-          "name": "2.1 Crear Proyecto de Grado",
+          "name": "2.1 Creacion de Proyectos de Grado",
           "request": {
             "method": "POST",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"titulo\": \"Sistema de Gestión de Bibliotecas\",\n  \"modalidad\": \"INVESTIGACION\",\n  \"directorEmail\": \"docente@unicauca.edu.co\",\n  \"estudiante1Email\": \"estudiante@unicauca.edu.co\",\n  \"objetivoGeneral\": \"Desarrollar un sistema para gestionar bibliotecas universitarias.\",\n  \"objetivosEspecificos\": \"1. Diseñar la arquitectura. 2. Implementar módulos.\"\n}"
+              "raw": "{\n  \"titulo\": \"Sistema de Gestión de Bibliotecas\",\n  \"modalidad\": \"INVESTIGACION\",\n  \"directorEmail\": \"CorreoDocente@unicauca.edu.co\",\n  \"estudiante1Email\": \"CorreoEstudiante@unicauca.edu.co\",\n  \"objetivoGeneral\": \"Desarrollar un sistema para la gestion de una tienda de juguetes 'geeks' en pequena escala\",\n  \"objetivosEspecificos\": \"1. Disenar la arquitectura. 2. Implementar modulos de ser necesario.\"\n}"
             },
             "url": "http://localhost:8082/api/proyectos"
           }
         },
         {
-          "name": "2.2 Subir Formato A (PDF)",
+          "name": "2.2 Subida del Formato A (PDF)",
           "request": {
             "method": "POST",
             "header": [],
@@ -93,10 +93,10 @@
       ]
     },
     {
-      "name": "🔷 Paso 3: Evaluar Formato A (Rechazo)",
+      "name": "3: Evaluacion del Formato A (Rechazo)",
       "item": [
         {
-          "name": "3.1 Evaluar Formato A - Rechazar",
+          "name": "3.1 Evaluacion del Formato A - Rechazar",
           "request": {
             "method": "POST",
             "url": {
@@ -115,17 +115,17 @@
       ]
     },
     {
-      "name": "🔷 Paso 4: Reintentar Formato A",
+      "name": "4: Reintento del Formato A",
       "item": [
         {
-          "name": "4.1 Reintentar Proyecto",
+          "name": "4.1 Reintento del Proyecto",
           "request": {
             "method": "POST",
             "url": "http://localhost:8082/api/proyectos/1/reintentar"
           }
         },
         {
-          "name": "4.2 Subir Nueva Versión del Formato A",
+          "name": "4.2 Subir una Nueva Version del Formato A",
           "request": {
             "method": "POST",
             "header": [],
@@ -143,10 +143,10 @@
       ]
     },
     {
-      "name": "🔷 Paso 5: Evaluar Formato A (Aprobación)",
+      "name": "5: Evaluacion del Formato A (Aprobación)",
       "item": [
         {
-          "name": "5.1 Evaluar Formato A - Aprobar",
+          "name": "5.1 Evaluacion de Formato A - Aprobar",
           "request": {
             "method": "POST",
             "url": {
@@ -165,10 +165,10 @@
       ]
     },
     {
-      "name": "🔷 Paso 6: Subir Anteproyecto",
+      "name": "6: Subida de Anteproyecto",
       "item": [
         {
-          "name": "6.1 Subir Anteproyecto",
+          "name": "6.1 Subida de Anteproyecto",
           "request": {
             "method": "POST",
             "url": {
@@ -178,7 +178,7 @@
               "port": "8082",
               "path": ["api", "proyectos", "1", "anteproyecto"],
               "query": [
-                { "key": "jefeDepartamentoEmail", "value": "jefe@unicauca.edu.co" }
+                { "key": "jefeDepartamentoEmail", "value": "CorreoJefazo@unicauca.edu.co" }
               ]
             }
           }
@@ -202,7 +202,7 @@
       ]
     },
     {
-      "name": "🔷 Paso 7: Consultar Estados",
+      "name": "7: Consulta de Estados",
       "item": [
         {
           "name": "7.1 Estudiante: Ver Estado del Proyecto",
