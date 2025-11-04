@@ -29,23 +29,3 @@ notificación asíncrona al email del jefe de departamento.
 
 7. Yo como jefe de departamento necesito ver los anteproyectos que han sido subidos por los docentes para luego asignar dos evaluadores del departamento de sistemas.
 Contexto: la asignación de evaluadores se hará en otra historia de usuario, aquí es solamente listar.
-
-VIDEO (BORRAR MAS ADELANTE)
-
-H Usuarios 
-Escenarios de escalabilidad
-Diagrama Contexto
-C4
-Implementacion
-Pruebas
-Commit
-Codigo
-
-1. Gloria
-2. Landinez
-3. Carlos
-4. Carlos
-5. Pino
-6. Pino
-7. Landinez
-8. Todos (después nos repartimos los postman)
