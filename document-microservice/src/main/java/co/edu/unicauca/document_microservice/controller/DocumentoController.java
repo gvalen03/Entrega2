@@ -56,6 +56,13 @@ public class DocumentoController {
         }
     }
 
+    @Operation(summary = "Obtener documentos de un proyecto por tipo de documento")
+    @GetMapping("/proyecto/{idProyecto}/tipo/{tipoDocumento}")
+    public ResponseEntity<List<Documento>> obtenerPorProyectoYTipo(@PathVariable Long idProyecto, @PathVariable String tipoDocumento) {
+        List<Documento> documentos = documentoService.obtenerDocumentosPorProyectoYTipo(idProyecto, tipoDocumento);
+        return ResponseEntity.ok(documentos);
+    }
+
     @Operation(summary = "Obtener documentos de un proyecto")
     @GetMapping("/proyecto/{idProyecto}")
     public ResponseEntity<List<Documento>> obtenerPorProyecto(@PathVariable Long idProyecto) {
