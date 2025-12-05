@@ -242,7 +242,20 @@ public class ProjectController {
             )
         }
     )
-    @GetMapping("/student/{email}")
+
+    @PostMapping("/{id}/subir-anteproyecto")
+    public ResponseEntity<?> subirAnteproyecto(@PathVariable Long id, @RequestParam String jefeDepartamentoEmail){
+        facade.subirAnteproyecto(id, jefeDepartamentoEmail);
+        return ResponseEntity.ok("Anteproyecto enviado a evaluación");
+    }
+
+    @PostMapping("/{id}/subir-monografia")
+    public ResponseEntity<?> subirMonografia(@PathVariable Long id){
+        facade.subirMonografia(id);
+        return ResponseEntity.ok("Monografia enviada a evaluación");
+    }
+
+    @GetMapping("/estudiante/{email}")
     public ResponseEntity<?> obtenerPorEstudiante(@PathVariable String email) {
         try {
             List<ProyectoGrado> proyectos = facade.obtenerProyectosPorEstudiante(email);

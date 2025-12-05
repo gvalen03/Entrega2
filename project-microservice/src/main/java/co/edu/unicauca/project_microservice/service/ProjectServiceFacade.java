@@ -3,6 +3,8 @@ package co.edu.unicauca.project_microservice.service;
 import co.edu.unicauca.project_microservice.Client.UserClient;
 import co.edu.unicauca.project_microservice.entity.ProyectoGrado;
 import co.edu.unicauca.project_microservice.entity.estados.EnPrimeraEvaluacionState;
+import co.edu.unicauca.project_microservice.entity.estados.EnPrimeraEvaluacionAnteState;
+import co.edu.unicauca.project_microservice.entity.estados.EnPrimeraEvaluacionMonoState;
 import co.edu.unicauca.project_microservice.infra.dto.*;
 import co.edu.unicauca.project_microservice.service.evaluacion.EvaluadorAprobacion;
 import co.edu.unicauca.project_microservice.service.evaluacion.EvaluadorRechazo;
@@ -18,6 +20,8 @@ public class ProjectServiceFacade implements IProjectServiceFacade {
     @Autowired private IProyectoService proyectoService;
     @Autowired private INotificationServiceClient notificationClient;
     @Autowired private EnPrimeraEvaluacionState enPrimeraEvaluacionState;
+    @Autowired private EnPrimeraEvaluacionAnteState enPrimeraEvaluacionAnteState;
+    @Autowired private EnPrimeraEvaluacionMonoState enPrimeraEvaluacionMonoState;
     @Autowired private EvaluadorAprobacion evaluadorAprobacion;
     @Autowired private EvaluadorRechazo evaluadorRechazo;
     @Autowired private UserClient userClient; // 👈 Inyecta Feign Client
@@ -85,6 +89,8 @@ public class ProjectServiceFacade implements IProjectServiceFacade {
         if (!"FORMATO_A_APROBADO".equals(p.getEstadoActual())) {
             throw new RuntimeException("Solo se puede subir anteproyecto si el Formato A está aprobado.");
         }
+        p.setEstado(enPrimeraEvaluacionAnteState);
+        proyectoService.guardar(p);
 
         AnteproyectoSubidoEvent event = new AnteproyectoSubidoEvent();
         event.setIdProyecto(p.getId());
@@ -96,6 +102,27 @@ public class ProjectServiceFacade implements IProjectServiceFacade {
             event.setTutor2Email(p.getCodirectorEmail());
         }
         notificationClient.notificarAnteproyectoSubido(event);
+    }
+
+    @Override
+    public void subirMonografia(Long idProyecto){
+        ProyectoGrado p = proyectoService.obtenerPorId(idProyecto);
+        if (!"ANTEPROYECTO_APROBADO".equals(p.getEstadoActual())) {
+            throw new RuntimeException("Solo se puede subir monografia si el Anteproyecto está aprobado.");
+        }
+        p.setEstado(enPrimeraEvaluacionMonoState);
+        proyectoService.guardar(p);
+/*
+        AnteproyectoSubidoEvent event = new AnteproyectoSubidoEvent();
+        event.setIdProyecto(p.getId());
+        event.setTitulo(p.getTitulo());
+        event.setJefeDepartamentoEmail(jefeDepartamentoEmail);
+        event.setEstudianteEmail(p.getEstudiante1Email());
+        event.setTutor1Email(p.getDirectorEmail());
+        if (p.getCodirectorEmail() != null && !p.getCodirectorEmail().isEmpty()) {
+            event.setTutor2Email(p.getCodirectorEmail());
+        }
+        notificationClient.notificarAnteproyectoSubido(event);*/
     }
 
     @Override

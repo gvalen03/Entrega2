@@ -8,6 +8,7 @@ public interface IProjectServiceFacade {
     void evaluarProyecto(Long id, boolean aprobado, String observaciones);
     void reintentarProyecto(Long id);
     void subirAnteproyecto(Long idProyecto, String jefeDepartamentoEmail);
+    void subirMonografia(Long idProyecto);
     List<ProyectoGrado> obtenerProyectosPorEstudiante(String email);
     List<ProyectoGrado> obtenerAnteproyectosPorJefe(String emailJefe);
 }
