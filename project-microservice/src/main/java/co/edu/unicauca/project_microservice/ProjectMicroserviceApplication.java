@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients
+@EnableFeignClients(basePackages = "co.edu.unicauca.project_microservice.Client")
 public class ProjectMicroserviceApplication {
 
 	public static void main(String[] args) {
