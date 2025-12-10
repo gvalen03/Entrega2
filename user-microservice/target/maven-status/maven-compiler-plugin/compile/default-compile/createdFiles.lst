@@ -1,0 +1,10 @@
+co\unicauca\edu\UserMicroservice\Controller\UserController.class
+co\unicauca\edu\UserMicroservice\Repository\RolRepository.class
+co\unicauca\edu\UserMicroservice\Entity\User.class
+co\unicauca\edu\UserMicroservice\Entity\Faculty.class
+co\unicauca\edu\UserMicroservice\Repository\UserRepository.class
+co\unicauca\edu\UserMicroservice\Services\IUserService.class
+co\unicauca\edu\UserMicroservice\Services\UserService.class
+co\unicauca\edu\UserMicroservice\Entity\Program.class
+co\unicauca\edu\UserMicroservice\UserMicroserviceApplication.class
+co\unicauca\edu\UserMicroservice\Entity\Rol.class
